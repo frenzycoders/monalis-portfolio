@@ -1,7 +1,10 @@
-# monalisa
+# monalisa-portfolio
 
-A new Flutter project.
-
+Monalis-Portfolio using flutter
+## Project Screenshot
+![Alt text](monalisa_web.png "Desktop view")
+![Alt text](mobile.png "Mobile View")
+![Alt text](mobile2.png "Mobile View)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
