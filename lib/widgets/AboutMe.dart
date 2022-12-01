@@ -20,7 +20,7 @@ class AboutMe extends StatelessWidget {
           height: 30,
         ),
         const Text(
-          'Hi! I\'m Gaurav Singh. I am a Full Stack Developer currently pursuing my MCA from Chandigarh University!',
+          'Hi! I\'m Gaurav Singh. I am a Full Stack Developer currently working as SDE at Magadh Digital Solutions PVT LTD, and pursuing my MCA from Chandigarh University!',
           style: TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 20,

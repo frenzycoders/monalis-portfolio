@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:monalisa/models/portfolio_model.dart';
 import 'package:monalisa/widgets/BlogItem.dart';
 import 'package:monalisa/widgets/section_header.dart';
 
 class BlogsWidget extends StatelessWidget {
-  const BlogsWidget({Key? key}) : super(key: key);
+  BlogsWidget({
+    Key? key,
+    required this.blogs,
+  }) : super(key: key);
+
+  List<Blogs> blogs;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +29,20 @@ class BlogsWidget extends StatelessWidget {
           ),
           SizedBox(
             height: 250,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return BlogItem();
-              },
-              itemCount: 4,
-            ),
+            child: blogs.isEmpty
+                ? Container(
+                    alignment: Alignment.center,
+                    child: Text('No Blogs Found'),
+                  )
+                : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return BlogItem(
+                        blog: blogs[index],
+                      );
+                    },
+                    itemCount: blogs.length,
+                  ),
           )
         ],
       ),

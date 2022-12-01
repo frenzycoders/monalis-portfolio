@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:monalisa/models/portfolio_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BlogItem extends StatefulWidget {
-  const BlogItem({Key? key}) : super(key: key);
-
+  BlogItem({
+    Key? key,
+    required this.blog,
+  }) : super(key: key);
+  Blogs blog;
   @override
   State<BlogItem> createState() => _BlogItemState();
 }
@@ -46,16 +51,16 @@ class _BlogItemState extends State<BlogItem> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   alignment: Alignment.topLeft,
-                  child: const Text(
-                    'blogs title',
+                  child: Text(
+                    widget.blog.title as String,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(
                       left: 10, right: 10, top: 0, bottom: 5),
-                  child: const Text(
-                    'WebRTC based video conferening app. Web app for video conferencing',
+                  child: Text(
+                    widget.blog.description as String,
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ),
@@ -71,8 +76,8 @@ class _BlogItemState extends State<BlogItem> {
                         width: 30,
                       ),
                       const SizedBox(width: 8),
-                      const Text(
-                        '10-20-2022-01-13-2023',
+                      Text(
+                        widget.blog.createdAt as String,
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],
@@ -85,10 +90,13 @@ class _BlogItemState extends State<BlogItem> {
                   padding: const EdgeInsets.only(
                       left: 10, right: 10, top: 0, bottom: 5),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () async {
+                          await launchUrl(
+                              Uri.parse(widget.blog.visitUrl as String));
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -99,25 +107,6 @@ class _BlogItemState extends State<BlogItem> {
                             ),
                             const Text(
                               ' visit',
-                              style: TextStyle(
-                                color: Colors.green,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "assets/code.png",
-                              height: 30,
-                              width: 30,
-                            ),
-                            const Text(
-                              ' source',
                               style: TextStyle(
                                 color: Colors.green,
                               ),

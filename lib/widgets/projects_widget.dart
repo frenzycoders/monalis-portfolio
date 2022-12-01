@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:monalisa/models/portfolio_model.dart';
 import 'package:monalisa/widgets/project_item.dart';
 import 'package:monalisa/widgets/section_header.dart';
 
 class ProjectWidget extends StatelessWidget {
-  const ProjectWidget({Key? key}) : super(key: key);
-
+  ProjectWidget({
+    Key? key,
+    required this.projects,
+  }) : super(key: key);
+  List<Projects> projects;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,13 +27,20 @@ class ProjectWidget extends StatelessWidget {
           ),
           SizedBox(
             height: 250,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return ProjectItem();
-              },
-              itemCount: 4,
-            ),
+            child: projects.isNotEmpty
+                ? ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return ProjectItem(
+                        project: projects[index],
+                      );
+                    },
+                    itemCount: projects.length,
+                  )
+                : Container(
+                    alignment: Alignment.center,
+                    child: const Text('No Projects Found'),
+                  ),
           )
         ],
       ),

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class StylishButton extends StatelessWidget {
-  const StylishButton({Key? key}) : super(key: key);
+  StylishButton({
+    Key? key,
+    required this.github,
+    required this.linkedin,
+  }) : super(key: key);
+  String github;
+  String linkedin;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +16,9 @@ class StylishButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () async {
+            await launchUrl(Uri.parse(github));
+          },
           child: Container(
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
@@ -36,9 +45,11 @@ class StylishButton extends StatelessWidget {
           width: 26,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () async {
+            await launchUrl(Uri.parse(linkedin));
+          },
           child: Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
               border: Border.all(color: Colors.black),

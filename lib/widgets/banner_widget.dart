@@ -7,8 +7,15 @@ import 'package:monalisa/configs/responsive.dart';
 import 'package:monalisa/widgets/Stylish_button.dart';
 
 class BannerWidget extends StatelessWidget {
-  const BannerWidget({Key? key}) : super(key: key);
-
+  BannerWidget({
+    Key? key,
+    required this.name,
+    required this.github,
+    required this.linkedIn,
+  }) : super(key: key);
+  String name;
+  String linkedIn;
+  String github;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,7 +91,7 @@ class BannerWidget extends StatelessWidget {
                 child: AnimatedTextKit(
                   repeatForever: false,
                   animatedTexts: [
-                    TypewriterAnimatedText('Gaurav Singh',
+                    TypewriterAnimatedText(name,
                         speed: Duration(milliseconds: 100),
                         textStyle: TextStyle(fontWeight: FontWeight.w400)),
                   ],
@@ -104,12 +111,14 @@ class BannerWidget extends StatelessWidget {
                 const SizedBox(width: 0.0, height: 50.0),
                 Text(
                   'I\'m',
-                  style: TextStyle(fontSize: Responsive.isMobile(context) ? 23 : 27.0, fontWeight: FontWeight.w900),
+                  style: TextStyle(
+                      fontSize: Responsive.isMobile(context) ? 23 : 27.0,
+                      fontWeight: FontWeight.w900),
                 ),
                 const SizedBox(width: 10.0, height: 50.0),
                 DefaultTextStyle(
                   style: TextStyle(
-                    fontSize:Responsive.isMobile(context) ? 21 : 26.0,
+                    fontSize: Responsive.isMobile(context) ? 21 : 26.0,
                     fontFamily: 'Agne',
                   ),
                   child: AnimatedTextKit(
@@ -130,13 +139,16 @@ class BannerWidget extends StatelessWidget {
             height: 20,
           ),
           const Text(
-            'I like software development, exploring tech and playing with nodejs',
+            'I like software development, exploring tech and playing with nodejs & flutter.',
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
           ),
           const SizedBox(
             height: 26,
           ),
-          const StylishButton(),
+          StylishButton(
+            github: github,
+            linkedin: linkedIn,
+          ),
         ],
       ),
     );

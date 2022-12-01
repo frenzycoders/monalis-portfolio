@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:monalisa/models/portfolio_model.dart';
 import 'package:monalisa/widgets/Stylish_button.dart';
 import 'package:monalisa/widgets/section_header.dart';
 
 class ContactWidget extends StatelessWidget {
-  const ContactWidget({Key? key}) : super(key: key);
-
+  ContactWidget({
+    Key? key,
+    required this.contact,
+    required this.github,
+    required this.linkdin,
+  }) : super(key: key);
+  Contact contact;
+  String linkdin;
+  String github;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,9 +28,9 @@ class ContactWidget extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        const Text(
-          'If you want to contact me then you can use below links.',
-          style: TextStyle(
+        Text(
+          contact.message as String,
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.w400,
@@ -31,25 +39,25 @@ class ContactWidget extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        const Text(
-          'Gaurav Singh',
-          style: TextStyle(
+        Text(
+          contact.name as String,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
         ),
-        const Text(
-          'gaurav4149singh@outlook.com',
-          style: TextStyle(
+        Text(
+          contact.email as String,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w400,
             fontSize: 18,
           ),
         ),
-        const Text(
-          '+91 9262715527',
-          style: TextStyle(
+        Text(
+          contact.number as String,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w400,
             fontSize: 18,
@@ -58,7 +66,10 @@ class ContactWidget extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        StylishButton(),
+        StylishButton(
+          github: github,
+          linkedin: linkdin,
+        ),
       ],
     );
   }

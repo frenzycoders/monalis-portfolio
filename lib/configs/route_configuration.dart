@@ -1,18 +1,11 @@
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:monalisa/bindings.dart';
 import 'package:monalisa/models/education_model.dart';
 import 'package:monalisa/screens/home_screen.dart';
-import 'package:monalisa/screens/splash_screen.dart';
 
 class Configuration {
   static List<GetPage> routes = [
-    GetPage(
-      name: '/home',
-      page: () => HomeScreen(),
-    ),
-    GetPage(
-      name: '/',
-      page: () => SplashScreen(),
-    )
+    GetPage(name: '/', page: () => HomeScreen(), binding: HomeBindings()),
   ];
   static String appName = 'Monalisa';
 
